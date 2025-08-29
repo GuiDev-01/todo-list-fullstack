@@ -1,86 +1,96 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+from database import init_database, get_all_tasks, create_task as db_create_task, update_task as db_update_task, delete_task as db_delete_task
 
-#Criar a aplicação Flask
+# Criar a aplicação Flask
 app = Flask(__name__)
 
-#Habilitar CORS para todas as rotas 
+# Habilitar CORS para todas as rotas
 CORS(app)
 
-#Lista temporária para armazenar as tarefas
-tasks = [
-{"id": 1, "title": "Estudar Flask", "completed": False},
-{"id": 2, "title": "Criar API REsT", "completed": False}
-]
-
-#Variável para controlar o próximo ID
-next_id = 3
-
-#Rota para listar todas as tarefas
+# Rota para listar todas as tarefas
 @app.route('/tasks', methods=['GET'])
 def get_tasks():
-    return jsonify(tasks)
+    """Retorna todas as tarefas do banco de dados"""
+    try:
+        tasks = get_all_tasks()
+        return jsonify(tasks)
+    except Exception as e:
+        return jsonify({'error': 'Erro ao buscar tarefas'}), 500
 
-#Rota para criar uma nova tarefa
+# Rota para criar uma nova tarefa
 @app.route('/tasks', methods=['POST'])
 def create_task():
-    global next_id
-    data = request.get_json()
+    """Cria uma nova tarefa no banco de dados"""
+    try:
+        data = request.get_json()
+        
+        if not data or not data.get('title'):
+            return jsonify({'error': 'Título é obrigatório'}), 400
+        
+        title = data.get('title').strip()
+        if not title:
+            return jsonify({'error': 'Título não pode estar vazio'}), 400
+        
+        new_task = db_create_task(title)
+        return jsonify(new_task), 201
+        
+    except Exception as e:
+        return jsonify({'error': 'Erro ao criar tarefa'}), 500
 
-    new_task = {
-        "id": next_id,
-        "title": data.get('title', ''),
-        "completed": False
-    }
-
-    tasks.append(new_task)
-    next_id += 1
-
-    return jsonify(new_task)
-
-#Rota para atualizar uma tarefa específica
+# Rota para atualizar uma tarefa específica
 @app.route('/tasks/<int:task_id>', methods=['PUT'])
 def update_task(task_id):
-    task = None
-    for t in tasks:
-        if t['id'] == task_id:
-            task = t
-            break
+    """Atualiza uma tarefa existente"""
+    try:
+        data = request.get_json()
+        
+        if not data:
+            return jsonify({'error': 'Dados não fornecidos'}), 400
+        
+        title = data.get('title')
+        completed = data.get('completed')
+        
+        # Validar título se fornecido
+        if title is not None:
+            title = title.strip()
+            if not title:
+                return jsonify({'error': 'Título não pode estar vazio'}), 400
+        
+        updated_task = db_update_task(task_id, title, completed)
+        
+        if not updated_task:
+            return jsonify({'error': 'Tarefa não encontrada'}), 404
+        
+        return jsonify(updated_task)
+        
+    except Exception as e:
+        return jsonify({'error': 'Erro ao atualizar tarefa'}), 500
 
-    #Se não encontrar a tarefa, retornar erro
-    if not task:
-        return jsonify({'error': 'Tarefa não encontrada.'}), 404
-
-    #Pegar os dados enviados
-    data = request.get_json()
-
-    #Atualizar os campos da tarefa
-    if 'title' in data:
-        task['title'] = data['title']
-    if 'completed' in data:
-        task['completed'] = data['completed']
-
-    return jsonify(task)
-
-#Rota para deletar uma tarefa
+# Rota para deletar uma tarefa específica
 @app.route('/tasks/<int:task_id>', methods=['DELETE'])
 def delete_task(task_id):
-    global tasks
-
-    #Procurar o índice da tarefa pelo ID
-    task_index = None
-    for i, task in enumerate(tasks):
-        if task['id'] == task_id:
-            task_index = i
-            break
-
-    if task_index  is None:
-        return jsonify({'error': 'Tarefa não encontrada'}), 404
-    
-    deleted_task = tasks.pop(task_index)
-
-    return jsonify({'message': 'Tarefa deletada com sucesso', 'task': deleted_task})
-
+    """Deleta uma tarefa do banco de dados"""
+    try:
+        deleted_task = db_delete_task(task_id)
+        
+        if not deleted_task:
+            return jsonify({'error': 'Tarefa não encontrada'}), 404
+        
+        return jsonify({
+            'message': 'Tarefa deletada com sucesso',
+            'task': deleted_task
+        })
+        
+    except Exception as e:
+        return jsonify({'error': 'Erro ao deletar tarefa'}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, host= '0.0.0.0', port=5000)
+    # Inicializar banco de dados ao iniciar a aplicação
+    print("Inicializando banco de dados...")
+    init_database()
+    print("Banco de dados inicializado com sucesso!")
+    
+    # Iniciar servidor Flask
+    print("Iniciando servidor Flask...")
+    app.run(debug=True, host='0.0.0.0', port=5000)
