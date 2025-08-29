@@ -154,23 +154,35 @@ Importe a collection do Postman: [Link para collection]
 
 ## 🎯 Próximos Passos
 
-### Backend (Próximas melhorias)
-- [ ] Implementar banco de dados SQLite para persistência
-- [ ] Adicionar autenticação de usuários
-- [ ] Validações avançadas de dados
-- [ ] Testes automatizados
+### Backend ✅ (Concluído)
+- [x] ✅ API REST Flask com 4 endpoints CRUD
+- [x] ✅ Implementar banco de dados SQLite para persistência
+- [x] ✅ Validações de dados e tratamento de erros
+- [x] ✅ Estrutura modular (separação database/API)
+- [ ] 🔄 Adicionar autenticação de usuários
+- [ ] 🔄 Testes automatizados
 
 ### Frontend Mobile (Em desenvolvimento)
-- [ ] Setup do React Native com Expo
-- [ ] Interface de usuário intuitiva
-- [ ] Integração completa com a API
-- [ ] Gerenciamento de estado global
+- [ ] 🚧 Setup do React Native com Expo
+- [ ] 🚧 Interface de usuário intuitiva
+- [ ] 🚧 Integração completa com a API
+- [ ] 🚧 Gerenciamento de estado global
 
-### Deploy e Produção
-- [ ] Deploy da API na nuvem (Heroku/Railway)
-- [ ] CI/CD pipeline
-- [ ] Documentação com Swagger
-- [ ] Publicação do app mobile
+### Deploy e Produção (Futuro)
+- [ ] 📋 Deploy da API na nuvem (Heroku/Railway)
+- [ ] 📋 CI/CD pipeline
+- [ ] 📋 Documentação com Swagger
+- [ ] 📋 Publicação do app mobile
+
+### 📊 Status Atual
+**Backend: 100% Funcional** 🎉
+- ✅ API REST completa
+- ✅ Banco SQLite integrado
+- ✅ Dados persistentes
+- ✅ Testado com Postman
+
+**Frontend: Em desenvolvimento** 🚧
+- 🔄 React Native setup em andamento
 
 ## 👨‍💻 Desenvolvido por
 
