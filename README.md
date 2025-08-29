@@ -150,7 +150,7 @@ DELETE /tasks/{id}
 
 Recomendo usar o [Postman](https://www.postman.com/) para testar os endpoints.
 
-Importe a collection do Postman: [Link para collection]
+Importe a collection do Postman: [Link para collection](https://guidev-01-5029446.postman.co/workspace/Guilherme's-Team's-Workspace~a3b8049f-d39a-487e-842d-ba4e5364cbc7/collection/48009682-439caca7-b147-469a-a173-c766bc5362b2?action=share&source=copy-link&creator=48009682)
 
 ## 🎯 Próximos Passos
 
@@ -176,9 +176,9 @@ Importe a collection do Postman: [Link para collection]
 
 **Antonio Guilherme**
 
-- LinkedIn: [Seu LinkedIn]
-- GitHub: [Seu GitHub]
-- Email: [Seu Email]
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/antonio-guilherme-santos/)
+- GitHub: [GitHub](https://github.com/GuiDev-01)
+
 
 ## 📄 Licença
 
