@@ -1,4 +1,4 @@
-# � Full-Stack To-Do List Application
+# 👨🏻‍💻 Full-Stack To-Do List Application
 
 > **🚧 Status: Em Desenvolvimento** | **Fase Atual: Backend API Completa**
 
