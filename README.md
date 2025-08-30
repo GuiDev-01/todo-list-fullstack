@@ -1,6 +1,6 @@
 # 👨🏻‍💻 Full-Stack To-Do List Application
 
-> **🚧 Status: Em Desenvolvimento** | **Fase Atual: Backend API Completa**
+> **🚧 Status: Em Desenvolvimento** | **Fase Atual: Frontend Mobile Implementado**
 
 Um aplicativo completo de lista de tarefas desenvolvido como projeto de aprendizado, demonstrando habilidades em desenvolvimento full-stack com Python/Flask no backend e React Native no frontend.
 
@@ -9,24 +9,39 @@ Um aplicativo completo de lista de tarefas desenvolvido como projeto de aprendiz
 Este projeto implementa uma aplicação completa de gerenciamento de tarefas com arquitetura full-stack:
 
 - **Backend:** API REST em Python com Flask (✅ Completo)
-- **Frontend:** Aplicativo mobile em React Native (🚧 Em desenvolvimento)
-- **Banco de Dados:** SQLite (📋 Próxima fase)
+- **Frontend:** Aplicativo mobile em React Native (✅ Interface básica implementada)
+- **Banco de Dados:** SQLite (✅ Integrado)
 
 ### ✨ Funcionalidades
 
+**Backend API:**
 - ✅ **Listar todas as tarefas** - `GET /tasks`
 - ✅ **Criar nova tarefa** - `POST /tasks`
 - ✅ **Atualizar tarefa** - `PUT /tasks/<id>`
 - ✅ **Deletar tarefa** - `DELETE /tasks/<id>`
 - ✅ **Tratamento de erros** (404 para tarefas não encontradas)
 - ✅ **CORS habilitado** para integração com frontend
+- ✅ **Banco SQLite integrado** com persistência de dados
+
+**Frontend Mobile:**
+- ✅ **Interface básica** com React Native
+- ✅ **Input para nova tarefa** com validação
+- ✅ **Lista de tarefas** responsiva
+- ✅ **Estilos modernos** e user-friendly
+- 🚧 **Integração com API** (próxima etapa)
 
 ## 🛠️ Tecnologias Utilizadas
 
+**Backend:**
 - **Python 3.12**
 - **Flask** - Framework web minimalista
 - **Flask-CORS** - Habilitação de CORS
-- **JSON** - Formato de dados da API
+- **SQLite** - Banco de dados local
+
+**Frontend:**
+- **React Native** - Desenvolvimento mobile multiplataforma
+- **Expo** - Plataforma de desenvolvimento React Native
+- **JavaScript ES6+** - Linguagem de programação
 
 ## 📋 Estrutura do Projeto
 
@@ -34,8 +49,14 @@ Este projeto implementa uma aplicação completa de gerenciamento de tarefas com
 Projeto_TODO_LIST/
 ├── backend/
 │   ├── app.py              # Aplicação principal Flask
+│   ├── database.py         # Operações do banco SQLite
+│   ├── todo_tasks.db       # Banco de dados SQLite
 │   └── requirements.txt    # Dependências Python
-├── frontend/               # (Em desenvolvimento)
+├── frontend/
+│   └── TodoApp/
+│       ├── App.js          # Componente principal React Native
+│       ├── package.json    # Dependências Node.js
+│       └── ...            # Configurações Expo
 ├── .gitignore             # Arquivos ignorados pelo Git
 └── README.md              # Este arquivo
 ```
@@ -47,43 +68,64 @@ Projeto_TODO_LIST/
 - Python 3.7 ou superior
 - pip (gerenciador de pacotes Python)
 
-### Instalação
+## ⚙️ Como Executar
+
+### Pré-requisitos
+
+**Backend:**
+- Python 3.7 ou superior
+- pip (gerenciador de pacotes Python)
+
+**Frontend:**
+- Node.js 16 ou superior
+- npm ou yarn
+- Expo CLI (`npm install -g @expo/cli`)
+- Expo Go app no celular (para testar)
+
+### Instalação e Execução
+
+#### 🔧 Backend (API)
 
 1. **Clone o repositório**
 ```bash
-git clone https://github.com/seu-usuario/todo-list-api.git
-cd todo-list-api
+git clone https://github.com/GuiDev-01/todo-list-fullstack.git
+cd todo-list-fullstack
 ```
 
-2. **Crie um ambiente virtual**
+2. **Configure o ambiente Python**
 ```bash
 python -m venv .venv
+.venv\Scripts\activate  # Windows
 ```
 
-3. **Ative o ambiente virtual**
-
-**Windows:**
-```bash
-.venv\Scripts\activate
-```
-
-**Linux/Mac:**
-```bash
-source .venv/bin/activate
-```
-
-4. **Instale as dependências**
+3. **Instale as dependências**
 ```bash
 cd backend
 pip install -r requirements.txt
 ```
 
-5. **Execute a aplicação**
+4. **Execute a API**
 ```bash
 python app.py
 ```
+🌐 **API rodando em:** `http://localhost:5000`
 
-A API estará rodando em: `http://localhost:5000`
+#### 📱 Frontend (Mobile)
+
+1. **Configure o ambiente Node.js**
+```bash
+cd frontend/TodoApp
+npm install
+```
+
+2. **Execute o app**
+```bash
+npx expo start
+```
+
+3. **Teste no dispositivo**
+- Escaneie o QR code com Expo Go (Android/iOS)
+- Ou pressione `w` para abrir no navegador
 
 ## 📡 Endpoints da API
 
