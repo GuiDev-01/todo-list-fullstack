@@ -21,6 +21,17 @@ export default function App() {
             setTasks([...tasks, newTaskObj]); // Spread operator para adicionar item
             setNewTask(''); // Limpar o input
         }
+    
+    };
+
+    const deleteTask = (taskId) => {
+        setTasks(tasks.filter(task => task.id !== taskId));
+    };
+
+    const toggleTask = (taskId) => {
+        setTasks(tasks.map(task =>
+            task.id === taskId ? { ...task, completed: !task.completed } : task
+        ));
     };
 
     return (
@@ -48,7 +59,20 @@ export default function App() {
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) => (
                     <View style={styles.taskItem}>
-                        <Text style={styles.taskText}>{item.text}</Text>
+                        <TouchableOpacity 
+                            style={styles.taskContent}
+                            onPress={() => toggleTask(item.id)}
+                        >
+                            <Text style={[styles.taskText, item.completed && styles.completedTask]}>
+                                {item.completed ? '✅ ' : '☐ '} {item.text}
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                            style={styles.deleteButton}
+                            onPress={() => deleteTask(item.id)}
+                        >
+                            <Text style={styles.deleteButtonText}>🗑️</Text>
+                        </TouchableOpacity>
                     </View>
                 )}
                 style={styles.taskList}
@@ -113,10 +137,28 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         borderLeftWidth: 4,
         borderLeftColor: '#007AFF',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    taskContent: {
+        flex: 1,
     },
     taskText: {
         fontSize: 16,
         color: '#333',
+    },
+    completedTask: {
+        textDecorationLine: 'line-through',
+        color: '#999',
+    },
+    deleteButton: {
+        padding: 8,
+        marginLeft: 10,
+    },
+    deleteButtonText: {
+        fontSize: 18,
+        color: '#FF6B6B',
     },
     emptyText: {
         textAlign: 'center',
