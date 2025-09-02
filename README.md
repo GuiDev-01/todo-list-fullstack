@@ -1,6 +1,6 @@
-# 👨🏻‍💻 Full-Stack To-Do List Application
+# 📱 TODO List Full-Stack
 
-> **🚧 Status: Em Desenvolvimento** | **Fase Atual: Frontend Mobile Implementado**
+> **🚀 Status: Frontend Completo | Backend Completo | Pronto para Integração**
 
 Um aplicativo completo de lista de tarefas desenvolvido como projeto de aprendizado, demonstrando habilidades em desenvolvimento full-stack com Python/Flask no backend e React Native no frontend.
 
@@ -9,7 +9,7 @@ Um aplicativo completo de lista de tarefas desenvolvido como projeto de aprendiz
 Este projeto implementa uma aplicação completa de gerenciamento de tarefas com arquitetura full-stack:
 
 - **Backend:** API REST em Python com Flask (✅ Completo)
-- **Frontend:** Aplicativo mobile em React Native (✅ Interface básica implementada)
+- **Frontend:** Aplicativo mobile em React Native (✅ Completo)
 - **Banco de Dados:** SQLite (✅ Integrado)
 
 ### ✨ Funcionalidades
@@ -24,11 +24,14 @@ Este projeto implementa uma aplicação completa de gerenciamento de tarefas com
 - ✅ **Banco SQLite integrado** com persistência de dados
 
 **Frontend Mobile:**
-- ✅ **Interface básica** com React Native
-- ✅ **Input para nova tarefa** com validação
-- ✅ **Lista de tarefas** responsiva
-- ✅ **Estilos modernos** e user-friendly
-- 🚧 **Integração com API** (próxima etapa)
+- ✅ **Interface completa** com React Native
+- ✅ **Adicionar novas tarefas** com input e validação
+- ✅ **Marcar tarefas como concluídas** (checkbox interativo)
+- ✅ **Deletar tarefas** (botão delete)
+- ✅ **Lista responsiva** com scroll automático
+- ✅ **Design moderno** e intuitivo
+- ✅ **Estados visuais** (concluída/pendente)
+- 🔄 **Integração com API** (próxima etapa)
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -42,6 +45,7 @@ Este projeto implementa uma aplicação completa de gerenciamento de tarefas com
 - **React Native** - Desenvolvimento mobile multiplataforma
 - **Expo** - Plataforma de desenvolvimento React Native
 - **JavaScript ES6+** - Linguagem de programação
+- **React Hooks** - useState para gerenciamento de estado
 
 ## 📋 Estrutura do Projeto
 
@@ -56,17 +60,11 @@ Projeto_TODO_LIST/
 │   └── TodoApp/
 │       ├── App.js          # Componente principal React Native
 │       ├── package.json    # Dependências Node.js
-│       └── ...            # Configurações Expo
+│       ├── app.json        # Configurações Expo
+│       └── assets/         # Recursos (ícones, imagens)
 ├── .gitignore             # Arquivos ignorados pelo Git
 └── README.md              # Este arquivo
 ```
-
-## ⚙️ Como Executar
-
-### Pré-requisitos
-
-- Python 3.7 ou superior
-- pip (gerenciador de pacotes Python)
 
 ## ⚙️ Como Executar
 
@@ -96,12 +94,13 @@ cd todo-list-fullstack
 ```bash
 python -m venv .venv
 .venv\Scripts\activate  # Windows
+# source .venv/bin/activate  # Linux/Mac
 ```
 
 3. **Instale as dependências**
 ```bash
 cd backend
-pip install -r requirements.txt
+pip install flask flask-cors
 ```
 
 4. **Execute a API**
@@ -120,12 +119,13 @@ npm install
 
 2. **Execute o app**
 ```bash
-npx expo start
+npx expo start --localhost
 ```
 
 3. **Teste no dispositivo**
-- Escaneie o QR code com Expo Go (Android/iOS)
-- Ou pressione `w` para abrir no navegador
+- Baixe o **Expo Go** na Play Store/App Store
+- Escaneie o QR code que aparece no terminal
+- O app será carregado automaticamente no seu celular
 
 ## 📡 Endpoints da API
 
@@ -192,52 +192,49 @@ DELETE /tasks/{id}
 
 Recomendo usar o [Postman](https://www.postman.com/) para testar os endpoints.
 
-Importe a collection do Postman: [Link para collection](https://guidev-01-5029446.postman.co/workspace/Guilherme's-Team's-Workspace~a3b8049f-d39a-487e-842d-ba4e5364cbc7/collection/48009682-439caca7-b147-469a-a173-c766bc5362b2?action=share&source=copy-link&creator=48009682)
+## 📱 Screenshots do App
+
+*Em breve - screenshots da interface mobile*
 
 ## 🎯 Próximos Passos
 
-### Backend ✅ (Concluído)
+### ✅ Concluído
 - [x] ✅ API REST Flask com 4 endpoints CRUD
-- [x] ✅ Implementar banco de dados SQLite para persistência
+- [x] ✅ Banco de dados SQLite para persistência
 - [x] ✅ Validações de dados e tratamento de erros
 - [x] ✅ Estrutura modular (separação database/API)
-- [ ] 🔄 Adicionar autenticação de usuários
-- [ ] 🔄 Testes automatizados
+- [x] ✅ Interface React Native completa
+- [x] ✅ Funcionalidades CRUD no frontend
+- [x] ✅ Design responsivo e intuitivo
 
-### Frontend Mobile (Em desenvolvimento)
-- [ ] 🚧 Setup do React Native com Expo
-- [ ] 🚧 Interface de usuário intuitiva
-- [ ] 🚧 Integração completa com a API
-- [ ] 🚧 Gerenciamento de estado global
-
-### Deploy e Produção (Futuro)
+### 🔄 Próximas Etapas
+- [ ] 🚧 Conectar frontend com backend via HTTP requests
+- [ ] 🚧 Sincronização de dados em tempo real
+- [ ] 📋 Adicionar autenticação de usuários
+- [ ] 📋 Testes automatizados
 - [ ] 📋 Deploy da API na nuvem (Heroku/Railway)
-- [ ] 📋 CI/CD pipeline
-- [ ] 📋 Documentação com Swagger
 - [ ] 📋 Publicação do app mobile
 
-### 📊 Status Atual
-**Backend: 100% Funcional** 🎉
-- ✅ API REST completa
-- ✅ Banco SQLite integrado
-- ✅ Dados persistentes
-- ✅ Testado com Postman
+## 📊 Status Atual
 
-**Frontend: Em desenvolvimento** 🚧
-- 🔄 React Native setup em andamento
+**🎉 Projeto 90% Completo!**
+
+- ✅ **Backend:** 100% Funcional
+- ✅ **Frontend:** 100% Funcional  
+- 🔄 **Integração:** Próximo passo
+- 📋 **Deploy:** Planejado
+
+## 🤝 Contribuições
+
+Este projeto foi desenvolvido como parte do meu aprendizado em desenvolvimento full-stack. Sugestões e feedback são sempre bem-vindos!
 
 ## 👨‍💻 Desenvolvido por
 
-**Antonio Guilherme**
+**Antonio Guilherme Santos**
 
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/antonio-guilherme-santos/)
-- GitHub: [GitHub](https://github.com/GuiDev-01)
-
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+- LinkedIn: [Antonio Guilherme Santos](https://www.linkedin.com/in/antonio-guilherme-santos/)
+- GitHub: [GuiDev-01](https://github.com/GuiDev-01)
 
 ---
 
-⭐ Se este projeto te ajudou, deixe uma estrela!
+⭐ Se este projeto te ajudou de alguma forma, deixe uma estrela no repositório!
