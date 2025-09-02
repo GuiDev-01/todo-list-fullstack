@@ -1,3 +1,5 @@
+![Demonstração do App To-Do List](https://github.com/GuiDev-01/todo-list-fullstack/blob/main/TODO_APP-ezgif.com-video-to-gif-converter.gif?raw=true)
+
 # 📱 TODO List Full-Stack
 
 > **🚀 Status: Frontend Completo | Backend Completo | Pronto para Integração**
