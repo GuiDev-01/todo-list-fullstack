@@ -23,7 +23,7 @@ Este projeto implementa uma aplicação completa de gerenciamento de tarefas com
 - ✅ **CORS habilitado** para integração com frontend
 - ✅ **Banco SQLite integrado** com persistência de dados
 
-**Frontend Mobile:**
+**Frontend Mobile:** (Atualizado)
 - ✅ **Interface completa** com React Native
 - ✅ **Adicionar novas tarefas** com input e validação
 - ✅ **Marcar tarefas como concluídas** (checkbox interativo)
@@ -111,16 +111,21 @@ python app.py
 
 #### 📱 Frontend (Mobile)
 
+Nota: este repositório foi atualizado para usar Expo SDK 54 para compatibilidade com Expo Go (se você atualizou o projeto localmente esta mudança já foi aplicada).
+
 1. **Configure o ambiente Node.js**
-```bash
+```powershell
 cd frontend/TodoApp
 npm install
 ```
 
 2. **Execute o app**
-```bash
-npx expo start --localhost
+```powershell
+# use a CLI local (recomendada) invocando via npx
+npx expo start
 ```
+
+Se você tiver problemas de desempenho durante instalações/upgrade (ex.: downloads lentos), considere mover o projeto para fora do OneDrive (ex.: `C:\dev\`) — OneDrive pode introduzir locks e I/O lento.
 
 3. **Teste no dispositivo**
 - Baixe o **Expo Go** na Play Store/App Store
@@ -223,6 +228,24 @@ Recomendo usar o [Postman](https://www.postman.com/) para testar os endpoints.
 - ✅ **Frontend:** 100% Funcional  
 - 🔄 **Integração:** Próximo passo
 - 📋 **Deploy:** Planejado
+
+## 📌 Notas sobre dependências e atualização
+
+- Backend: as dependências Python estão em `backend/requirements.txt`. Para instalar tudo de uma vez a partir da raiz do repositório:
+```powershell
+cd "C:\Users\Antonio Santos\OneDrive\Desktop\Projeto_TODO_LIST"
+pip install -r requirements.txt
+```
+
+- Frontend: para manter o SDK do Expo compatível com o Expo Go do seu celular, use `npx expo upgrade` dentro de `frontend/TodoApp` quando precisar atualizar o SDK e então rode `npm install`.
+
+- Se você preferir instalar as dependências do backend isoladamente:
+```powershell
+cd backend
+pip install -r requirements.txt
+```
+
+Se quiser, eu posso preparar um script simples (PowerShell) para automatizar criação do ambiente, instalação das dependências e inicialização do backend+frontend.
 
 ## 🤝 Contribuições
 
