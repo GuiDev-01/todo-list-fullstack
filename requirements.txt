@@ -1,2 +1,5 @@
 flask==3.0.3
 flask-cors==4.0.1
+# Optional (uncomment if you want production server or dotenv support):
+# gunicorn==20.1.0
+# python-dotenv==1.0.0

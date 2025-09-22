@@ -77,16 +77,15 @@ def update_task(task_id, title=None, completed=None):
     """Atualiza uma tarefa existente no banco de dados"""
     conn = sqlite3.connect(DATABASE_PATH)
     cursor = conn.cursor()
-
-    #Verificar se a tarefa existe
-    cursor.execute('SELECT id FROM tasks WHERE id = ?', (task_id,))
+    # Verificar se a tarefa existe (buscar id, title e completed)
+    cursor.execute('SELECT id, title, completed FROM tasks WHERE id = ?', (task_id,))
     task = cursor.fetchone()
 
     if not task:
         conn.close()
         return None
-    
-    #Atualizar apenas os campos fornecidos
+
+    # Atualizar apenas os campos fornecidos
     current_title = task[1]
     current_completed = bool(task[2])
 
@@ -96,8 +95,8 @@ def update_task(task_id, title=None, completed=None):
     cursor.execute(
         'UPDATE tasks SET title = ?, completed = ? WHERE id = ?',
         (new_title, int(new_completed), task_id)
-        )
-    
+    )
+
     conn.commit()
     conn.close()
 
@@ -111,21 +110,21 @@ def delete_task(task_id):
     """Deleta uma tarefa do banco de dados"""
     conn = sqlite3.connect(DATABASE_PATH)
     cursor = conn.cursor()
-
-    #Verificar se a tarefa existe
-    cursor.execute('SELECT id FROM tasks WHERE id = ?', (task_id,))
+    # Verificar se a tarefa existe e recuperar seus dados
+    cursor.execute('SELECT id, title, completed FROM tasks WHERE id = ?', (task_id,))
     task = cursor.fetchone()
 
     if not task:
         conn.close()
         return None
 
+    # Deletar a tarefa e retornar os dados da tarefa deletada
     cursor.execute('DELETE FROM tasks WHERE id = ?', (task_id,))
     conn.commit()
     conn.close()
 
     return {
-        'id': task_id[0],
+        'id': task[0],
         'title': task[1],
         'completed': bool(task[2])
     }
